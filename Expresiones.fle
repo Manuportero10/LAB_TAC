@@ -1,0 +1,76 @@
+%%
+
+%class TokenLexer
+%standalone
+%8bit
+
+%{
+    public final int SEMICOLON;
+    public final int COMMA;
+    public final int OPEN_PARENTHESIS;
+    public final int CLOSE_PARENTHESIS;
+    public final int DEF_STATIC;
+    public final int ASSIGN;
+    public final int OP_ASSIGN;
+    public final int LOOP;
+
+    public int semicolonCount;
+    public int commaCount;
+    public int openParenthesisCount;
+    public int closeParenthesisCount;
+    public int defStaticCount;
+    public int assignCount;
+    public int opAssignCount;
+    public int loopCount;
+%}
+
+%init{
+    SEMICOLON = 1;
+    COMMA = 2;
+    OPEN_PARENTHESIS = 3;
+    CLOSE_PARENTHESIS = 4;
+    DEF_STATIC = 5;
+    ASSIGN = 6;
+    OP_ASSIGN = 7;
+    LOOP = 8;
+
+    semicolonCount = 0;
+    commaCount = 0;
+    openParenthesisCount = 0;
+    closeParenthesisCount = 0;
+    defStaticCount = 0;
+    assignCount = 0;
+    opAssignCount = 0;
+    loopCount = 0;
+%init}
+
+%eof{
+    System.out.println("-----FIN DEL PROGRAMA-----");
+    System.out.println("Recuento de tokens:");
+    System.out.println("SEMICOLON: " + semicolonCount);
+    System.out.println("COMMA: " + commaCount);
+    System.out.println("OPEN_PARENTHESIS: " + openParenthesisCount);
+    System.out.println("CLOSE_PARENTHESIS: " + closeParenthesisCount);
+    System.out.println("DEF_STATIC: " + defStaticCount);
+    System.out.println("ASSIGN: " + assignCount);
+    System.out.println("OP_ASSIGN: " + opAssignCount);
+    System.out.println("LOOP: " + loopCount);
+%eof}
+
+%%
+
+";" { semicolonCount++; System.out.println("TOKEN: SEMICOLON"); }
+"," { commaCount++; System.out.println("TOKEN: COMMA"); }
+"(" { openParenthesisCount++; System.out.println("TOKEN: OPEN_PARENTHESIS"); }
+")" { closeParenthesisCount++; System.out.println("TOKEN: CLOSE_PARENTHESIS"); }
+"static" { defStaticCount++; System.out.println("TOKEN: DEF_STATIC"); }
+":=" | "=" { assignCount++; System.out.println("TOKEN: ASSIGN"); }
+"++" | "--" { opAssignCount++; System.out.println("TOKEN: OP_ASSIGN"); }
+"for" | "while" | "dowhile" { loopCount++; System.out.println("TOKEN: LOOP"); }
+
+[^ \t\n\r\f] {}   // Ignorar espacios en blanco y caracteres de control
+
+
+
+
+
