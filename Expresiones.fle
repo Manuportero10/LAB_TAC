@@ -21,6 +21,14 @@
     public final int RETURN;
     public final int OPEN_BRACKET;
     public final int CLOSE_BRACKET;
+
+    public final int PUBLIC;
+    public final int CLASS;
+    public final int DEF_MAIN;
+    public final int ID;
+    public final int VAR_TYPE;
+    public final int BOOLEAN;
+    public final int INTEGER;
    
     
     public int semicolonCount;
@@ -39,6 +47,14 @@
     public int returnCount;
     public int open_bracketCount;
     public int close_bracketCount;
+
+    public int publicCount;
+    public int classCount;
+    public int mainCount;
+    public int idCount;
+    public int var_typeCount;
+    public int booleanCount;
+    public int integerCount;
 %}
 
 %init{
@@ -57,6 +73,13 @@
     RETURN = 13;
     OPEN_BRACKET = 14;
     CLOSE_BRACKET = 15;
+    PUBLIC = 16;
+    CLASS = 17;
+    DEF_MAIN = 18;
+    ID = 19;
+    VAR_TYPE = 20;
+    BOOLEAN = 21;
+    INTEGER = 22;
 
     semicolonCount = 0;
     commaCount = 0;
@@ -73,6 +96,13 @@
     returnCount = 0;
     open_bracketCount = 0;
     close_bracketCount = 0;
+    publicCount = 0;
+    classCount = 0;
+    mainCount = 0;
+    idCount = 0;
+    var_typeCount = 0;
+    booleanCount = 0;
+    integerCount = 0;
 %init}
 
 %eof{
@@ -92,6 +122,14 @@
     System.out.println("RETURN: " + returnCount);
     System.out.println("OPEN_BRACKET: " + open_bracketCount);
     System.out.println("CLOSE_BRACKET: " + close_bracketCount);
+    System.out.println("PUBLIC: " + publicCount);
+    System.out.println("CLASS: " + classCount);
+    System.out.println("DEF_MAIN: " + mainCount);
+    System.out.println("ID:" + idCount);
+    System.out.println("VAR_TYPE:" + var_typeCount);
+    System.out.println("BOOLEAN:" + booleanCount);
+    System.out.println("INTEGER:" + integerCount);
+
 %eof}
 
 %%
@@ -111,7 +149,13 @@
 "return" {returnCount++; System.out.println("TOKEN: RETURN => " + yytext()); }
 "{" {open_bracketCount++; System.out.println("TOKEN: OPEN_BRACKET => " + yytext()); }
 "}" {close_bracketCount++; System.out.println("TOKEN: CLOSE_BRACKET => " + yytext()); }
-
+"public" {publicCount++; System.out.println("TOKEN: PUBLIC => " + yytext()); }
+"class" {classCount++; System.out.println("TOKEN: CLASS => " + yytext()); }
+"main" {mainCount++; System.out.println("TOKEN: DEF_MAIN => " + yytext()); }
+[a-zA-Z][a-zA-Z0-9_]* {idCount++; System.out.println("TOKEN: ID => " + yytext()); }
+"int" | "boolean" {var_typeCount++; System.out.println("TOKEN: VAR_TYPE => " + yytext()); }
+"true" | "false" {booleanCount++; System.out.println("TOKEN: BOOLEAN => " + yytext()); }
+[0-9]*[0-9] {integerCount++; System.out.println("TOKEN: INTEGER => " + yytext()); }
 [^ \t\n\r\f] {}   // Ignorar espacios en blanco y caracteres de control
 
 
