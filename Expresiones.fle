@@ -13,7 +13,16 @@
     public final int ASSIGN;
     public final int OP_ASSIGN;
     public final int LOOP;
-
+    
+	public final int ARITHMETIC;
+    public final int RELATIONAL;
+    public final int LOGICAL;
+    public final int RETURN_TYPE;
+    public final int RETURN;
+    public final int OPEN_BRACKET;
+    public final int CLOSE_BRACKET;
+   
+    
     public int semicolonCount;
     public int commaCount;
     public int openParenthesisCount;
@@ -22,6 +31,14 @@
     public int assignCount;
     public int opAssignCount;
     public int loopCount;
+    
+    public int arithmeticCount;
+    public int relationalCount;
+    public int logicalCount;
+    public int return_typeCount;
+    public int returnCount;
+    public int open_bracketCount;
+    public int close_bracketCount;
 %}
 
 %init{
@@ -33,6 +50,13 @@
     ASSIGN = 6;
     OP_ASSIGN = 7;
     LOOP = 8;
+   	ARITHMETIC = 9;
+    RELATIONAL = 10;
+    LOGICAL = 11;
+    RETURN_TYPE = 12;
+    RETURN = 13;
+    OPEN_BRACKET = 14;
+    CLOSE_BRACKET = 15;
 
     semicolonCount = 0;
     commaCount = 0;
@@ -42,6 +66,13 @@
     assignCount = 0;
     opAssignCount = 0;
     loopCount = 0;
+    arithmeticCount = 0;
+    relationalCount = 0;
+    logicalCount = 0;
+    return_typeCount = 0;
+    returnCount = 0;
+    open_bracketCount = 0;
+    close_bracketCount = 0;
 %init}
 
 %eof{
@@ -54,19 +85,32 @@
     System.out.println("DEF_STATIC: " + defStaticCount);
     System.out.println("ASSIGN: " + assignCount);
     System.out.println("OP_ASSIGN: " + opAssignCount);
-    System.out.println("LOOP: " + loopCount);
+    System.out.println("ARITHMETIC: " + arithmeticCount);
+    System.out.println("RELATIONAL: " + relationalCount);
+    System.out.println("LOGICAL: " + logicalCount);
+    System.out.println("RETURN_TYPE: " + return_typeCount);
+    System.out.println("RETURN: " + returnCount);
+    System.out.println("OPEN_BRACKET: " + open_bracketCount);
+    System.out.println("CLOSE_BRACKET: " + close_bracketCount);
 %eof}
 
 %%
 
-";" { semicolonCount++; System.out.println("TOKEN: SEMICOLON"); }
-"," { commaCount++; System.out.println("TOKEN: COMMA"); }
-"(" { openParenthesisCount++; System.out.println("TOKEN: OPEN_PARENTHESIS"); }
-")" { closeParenthesisCount++; System.out.println("TOKEN: CLOSE_PARENTHESIS"); }
-"static" { defStaticCount++; System.out.println("TOKEN: DEF_STATIC"); }
-":=" | "=" { assignCount++; System.out.println("TOKEN: ASSIGN"); }
-"++" | "--" { opAssignCount++; System.out.println("TOKEN: OP_ASSIGN"); }
-"for" | "while" | "dowhile" { loopCount++; System.out.println("TOKEN: LOOP"); }
+";" { semicolonCount++; System.out.println("TOKEN: SEMICOLON => " + yytext()); }
+"," { commaCount++; System.out.println("TOKEN: COMMA => " + yytext()); }
+"(" { openParenthesisCount++; System.out.println("TOKEN: OPEN_PARENTHESIS => " + yytext()); }
+")" { closeParenthesisCount++; System.out.println("TOKEN: CLOSE_PARENTHESIS => " + yytext()); }
+"static" { defStaticCount++; System.out.println("TOKEN: DEF_STATIC => " + yytext()); }
+":=" | "=" { assignCount++; System.out.println("TOKEN: ASSIGN => " + yytext()); }
+"++" | "--" { opAssignCount++; System.out.println("TOKEN: OP_ASSIGN => " + yytext()); }
+"for" | "while" | "dowhile" { loopCount++; System.out.println("TOKEN: LOOP => " + yytext()); }
+"+" | "-" |  "*" | "/" {arithmeticCount++; System.out.println("TOKEN: ARITHMETIC => " + yytext()); } 
+"<" | "<=" | ">" | ">=" | "==" | "!="  {relationalCount++; System.out.println("TOKEN: RELATIONAL => " + yytext()); }
+"&&" | "||" | "!" {logicalCount++; System.out.println("TOKEN: LOGICAL => " + yytext()); }
+"int" | "boolean" | "void" {return_typeCount++; System.out.println("TOKEN: RETURN_TYPE => " + yytext()); }
+"return" {returnCount++; System.out.println("TOKEN: RETURN => " + yytext()); }
+"{" {open_bracketCount++; System.out.println("TOKEN: OPEN_BRACKET => " + yytext()); }
+"}" {close_bracketCount++; System.out.println("TOKEN: CLOSE_BRACKET => " + yytext()); }
 
 [^ \t\n\r\f] {}   // Ignorar espacios en blanco y caracteres de control
 
