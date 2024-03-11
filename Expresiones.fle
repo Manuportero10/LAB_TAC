@@ -56,7 +56,32 @@
     public int close_bracketCount;  
 %}
 
-%init{    
+%init{
+    PUBLIC = 1;
+    CLASS = 2;
+    MAIN = 3;
+    STATIC = 4;
+    VOID = 5;
+    FOR = 6;
+    WHILE = 7;
+    DO = 8;
+    ID = 9;
+    VAR_TYPE = 10;
+    BOOLEAN = 11;
+    INTEGER = 12;
+    ASSIGN = 13;
+    OP_ASSIGN = 14;
+	ARITHMETIC = 15;
+    RELATIONAL = 16;
+    LOGICAL = 17;
+    RETURN = 18;
+    SEMICOLON = 19;
+    COMMA = 20;
+    OPEN_PARENTHESIS = 21;
+    CLOSE_PARENTHESIS = 22;
+    OPEN_BRACKET = 23;
+    CLOSE_BRACKET = 24;
+
     publicCount = 0;
     classCount = 0;
     mainCount = 0;
@@ -115,11 +140,11 @@
 %%
 "public" {publicCount++; System.out.println("TOKEN: PUBLIC => " + yytext()); }
 "class" {classCount++; System.out.println("TOKEN: CLASS => " + yytext()); }
-"main" {mainCount++; System.out.println("TOKEN: DEF_MAIN => " + yytext()); }
-"static" { staticCount++; System.out.println("TOKEN: DEF_STATIC => " + yytext()); }
-"void" {voidCount++; System.out.println("TOKEN: DEF_VOID => " + yytext()); }
-"for"{ forCount++; System.out.println("TOKEN: FOR => " + yytext()); }
-"while"{ whileCount++; System.out.println("TOKEN: WHILE => " + yytext()); }
+"main" {mainCount++; System.out.println("TOKEN: MAIN => " + yytext()); }
+"static" { staticCount++; System.out.println("TOKEN: STATIC => " + yytext()); }
+"void" {voidCount++; System.out.println("TOKEN: VOID => " + yytext()); }
+"for" { forCount++; System.out.println("TOKEN: FOR => " + yytext()); }
+"while" { whileCount++; System.out.println("TOKEN: WHILE => " + yytext()); }
 "do"{ doCount++; System.out.println("TOKEN: DO => " + yytext()); }
 "true" | "false" {booleanCount++; System.out.println("TOKEN: BOOLEAN => " + yytext()); }
 "int" | "boolean" {var_typeCount++; System.out.println("TOKEN: VAR_TYPE => " + yytext()); }
