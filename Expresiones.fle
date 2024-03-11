@@ -116,8 +116,8 @@
 "public" {publicCount++; System.out.println("TOKEN: PUBLIC => " + yytext()); }
 "class" {classCount++; System.out.println("TOKEN: CLASS => " + yytext()); }
 "main" {mainCount++; System.out.println("TOKEN: DEF_MAIN => " + yytext()); }
-"static" { defStaticCount++; System.out.println("TOKEN: DEF_STATIC => " + yytext()); }
-"void" {defVoidCount++; System.out.println("TOKEN: DEF_VOID => " + yytext()); }
+"static" { staticCount++; System.out.println("TOKEN: DEF_STATIC => " + yytext()); }
+"void" {voidCount++; System.out.println("TOKEN: DEF_VOID => " + yytext()); }
 "for"{ forCount++; System.out.println("TOKEN: FOR => " + yytext()); }
 "while"{ whileCount++; System.out.println("TOKEN: WHILE => " + yytext()); }
 "do"{ doCount++; System.out.println("TOKEN: DO => " + yytext()); }
