@@ -114,11 +114,11 @@
     System.out.println("PUBLIC: " + publicCount);
     System.out.println("CLASS: " + classCount);
     System.out.println("MAIN: " + mainCount);
-    System.out.println("STATIC: " + defStaticCount);
-    System.out.println("VOID: " + defVoidCount)
+    System.out.println("STATIC: " + staticCount);
+    System.out.println("VOID: " + voidCount);
     System.out.println("FOR: " + forCount);
     System.out.println("WHILE: " + whileCount);
-    System.out.println("DO: " + doCount)
+    System.out.println("DO: " + doCount);
     System.out.println("ID:" + idCount);
     System.out.println("VAR_TYPE:" + var_typeCount);
     System.out.println("BOOLEAN:" + booleanCount);
@@ -145,7 +145,7 @@
 "void" {voidCount++; System.out.println("TOKEN: VOID => " + yytext()); }
 "for" { forCount++; System.out.println("TOKEN: FOR => " + yytext()); }
 "while" { whileCount++; System.out.println("TOKEN: WHILE => " + yytext()); }
-"do"{ doCount++; System.out.println("TOKEN: DO => " + yytext()); }
+"do" { doCount++; System.out.println("TOKEN: DO => " + yytext()); }
 "true" | "false" {booleanCount++; System.out.println("TOKEN: BOOLEAN => " + yytext()); }
 "int" | "boolean" {var_typeCount++; System.out.println("TOKEN: VAR_TYPE => " + yytext()); }
 "return" {returnCount++; System.out.println("TOKEN: RETURN => " + yytext()); }
