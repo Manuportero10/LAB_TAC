@@ -30,14 +30,14 @@ class TokenLexer {
    * Translates characters to character classes
    */
   private static final char [] ZZ_CMAP = {
-     0,  0,  0,  0,  0,  0,  0,  0,  0, 38, 38,  0, 38, 38,  0,  0, 
+     0,  0,  0,  0,  0,  0,  0,  0,  0, 36, 36,  0, 36, 36,  0,  0, 
      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
-    38, 24,  0,  0,  0,  0, 25,  0,  3,  4, 22, 12,  2, 13,  0, 22, 
-    37, 37, 37, 37, 37, 37, 37, 37, 37, 37, 10,  1, 23, 11, 23,  0, 
-     0, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 
-    35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35,  0,  0,  0,  0, 36, 
-     0,  7, 28,  9, 21, 20, 14, 35, 18,  8, 35, 35, 19, 34, 27, 15, 
-    33, 35, 16,  5,  6, 30, 29, 17, 35, 35, 35, 31, 26, 32,  0,  0, 
+    36, 27,  0,  0,  0,  0, 28,  0, 32, 33, 25, 23, 31, 24,  0, 25, 
+    20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 21, 30, 26, 22, 26,  0, 
+     0, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 
+    18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18,  0,  0,  0,  0, 19, 
+     0,  7,  3,  6, 17, 13, 14, 18, 18,  5, 18, 18,  4,  9, 10, 15, 
+     1, 18, 12,  8, 11,  2, 16, 18, 18, 18, 18, 34, 29, 35,  0,  0, 
      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
@@ -54,14 +54,14 @@ class TokenLexer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\1\2\1\3\1\4\1\5\4\6\1\1"+
-    "\1\7\2\10\4\6\1\10\1\11\1\12\2\1\2\6"+
-    "\1\13\1\14\2\6\1\15\1\16\3\6\1\7\1\11"+
-    "\1\17\4\6\1\12\5\6\1\20\1\6\1\21\14\6"+
-    "\1\22\1\6\1\23\3\6\1\24\1\25\1\6\1\26";
+    "\1\0\1\1\13\2\1\3\1\1\1\4\3\5\1\6"+
+    "\1\7\2\1\1\10\1\11\1\12\1\13\1\14\1\15"+
+    "\1\16\12\2\1\4\1\6\1\17\1\7\2\2\1\20"+
+    "\13\2\1\21\1\22\3\2\1\23\2\2\1\24\1\2"+
+    "\1\25\1\26";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[72];
+    int [] result = new int[70];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -86,18 +86,18 @@ class TokenLexer {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\47\0\47\0\47\0\47\0\47\0\116\0\165"+
-    "\0\234\0\303\0\352\0\u0111\0\u0138\0\u015f\0\u0186\0\u01ad"+
-    "\0\u01d4\0\u01fb\0\47\0\u0111\0\u0111\0\u0222\0\u0249\0\u0270"+
-    "\0\u0297\0\47\0\47\0\u02be\0\u02e5\0\u030c\0\47\0\u0333"+
-    "\0\u035a\0\u0381\0\47\0\47\0\47\0\u03a8\0\u03cf\0\u03f6"+
-    "\0\u041d\0\47\0\u0444\0\u046b\0\u0492\0\u04b9\0\u04e0\0\165"+
-    "\0\u0507\0\165\0\u052e\0\u0555\0\u057c\0\u05a3\0\u05ca\0\u05f1"+
-    "\0\u0618\0\u063f\0\u0666\0\u068d\0\u06b4\0\u06db\0\165\0\u0702"+
-    "\0\165\0\u0729\0\u0750\0\u0777\0\165\0\165\0\u079e\0\165";
+    "\0\0\0\45\0\112\0\157\0\224\0\271\0\336\0\u0103"+
+    "\0\u0128\0\u014d\0\u0172\0\u0197\0\u01bc\0\u01e1\0\u0206\0\u022b"+
+    "\0\u0250\0\u0275\0\45\0\u022b\0\u022b\0\u029a\0\u02bf\0\45"+
+    "\0\45\0\45\0\45\0\45\0\45\0\45\0\u02e4\0\u0309"+
+    "\0\u032e\0\u0353\0\u0378\0\u039d\0\u03c2\0\u03e7\0\u040c\0\u0431"+
+    "\0\45\0\45\0\45\0\45\0\u0456\0\u047b\0\157\0\u04a0"+
+    "\0\u04c5\0\u04ea\0\u050f\0\u0534\0\u0559\0\u057e\0\u05a3\0\u05c8"+
+    "\0\u05ed\0\u0612\0\157\0\157\0\u0637\0\u065c\0\u0681\0\157"+
+    "\0\u06a6\0\u06cb\0\157\0\u06f0\0\157\0\157";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[72];
+    int [] result = new int[70];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -120,67 +120,36 @@ class TokenLexer {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\5\1\6\1\7\2\10\1\11"+
-    "\1\12\1\13\1\14\1\15\1\16\1\17\1\10\1\20"+
-    "\1\21\3\10\1\22\1\23\1\24\1\25\1\26\1\27"+
-    "\1\10\1\30\1\31\1\10\1\32\1\33\1\34\1\35"+
-    "\1\10\1\2\1\36\1\37\54\0\1\10\1\40\3\10"+
-    "\4\0\10\10\5\0\4\10\2\0\5\10\6\0\5\10"+
-    "\4\0\10\10\5\0\4\10\2\0\5\10\6\0\5\10"+
-    "\4\0\10\10\5\0\1\41\3\10\2\0\5\10\6\0"+
-    "\5\10\4\0\5\10\1\42\2\10\5\0\4\10\2\0"+
-    "\5\10\14\0\1\43\46\0\1\44\47\0\1\45\47\0"+
-    "\1\45\36\0\5\10\4\0\1\10\1\46\6\10\5\0"+
-    "\4\10\2\0\5\10\6\0\5\10\4\0\6\10\1\47"+
-    "\1\10\5\0\4\10\2\0\5\10\6\0\5\10\4\0"+
-    "\4\10\1\50\3\10\5\0\4\10\2\0\5\10\6\0"+
-    "\5\10\4\0\1\10\1\51\6\10\5\0\4\10\2\0"+
-    "\5\10\32\0\1\52\47\0\1\52\21\0\5\10\4\0"+
-    "\1\10\1\53\6\10\5\0\4\10\2\0\5\10\6\0"+
-    "\5\10\4\0\1\10\1\54\6\10\5\0\4\10\2\0"+
-    "\5\10\6\0\5\10\4\0\10\10\5\0\3\10\1\55"+
-    "\2\0\5\10\6\0\2\10\1\56\2\10\4\0\10\10"+
-    "\5\0\4\10\2\0\5\10\46\0\1\36\6\0\2\10"+
-    "\1\57\2\10\4\0\10\10\5\0\4\10\2\0\5\10"+
-    "\6\0\1\10\1\60\3\10\4\0\10\10\5\0\4\10"+
-    "\2\0\5\10\6\0\2\10\1\61\2\10\4\0\10\10"+
-    "\5\0\4\10\2\0\5\10\6\0\5\10\4\0\2\10"+
-    "\1\62\5\10\5\0\4\10\2\0\5\10\6\0\1\10"+
-    "\1\63\3\10\4\0\10\10\5\0\4\10\2\0\5\10"+
-    "\6\0\3\10\1\64\1\10\4\0\10\10\5\0\4\10"+
-    "\2\0\5\10\6\0\5\10\4\0\3\10\1\21\4\10"+
-    "\5\0\4\10\2\0\5\10\6\0\5\10\4\0\1\10"+
-    "\1\65\6\10\5\0\4\10\2\0\5\10\6\0\3\10"+
-    "\1\66\1\10\4\0\10\10\5\0\4\10\2\0\5\10"+
-    "\6\0\5\10\4\0\10\10\5\0\1\10\1\67\2\10"+
-    "\2\0\5\10\6\0\3\10\1\70\1\10\4\0\10\10"+
-    "\5\0\4\10\2\0\5\10\6\0\1\10\1\71\3\10"+
-    "\4\0\10\10\5\0\4\10\2\0\5\10\6\0\1\72"+
-    "\4\10\4\0\10\10\5\0\4\10\2\0\5\10\6\0"+
-    "\5\10\4\0\10\10\5\0\3\10\1\73\2\0\5\10"+
-    "\6\0\5\10\4\0\5\10\1\74\2\10\5\0\4\10"+
-    "\2\0\5\10\6\0\5\10\4\0\5\10\1\75\2\10"+
-    "\5\0\4\10\2\0\5\10\6\0\5\10\4\0\7\10"+
-    "\1\60\5\0\4\10\2\0\5\10\6\0\5\10\4\0"+
-    "\5\10\1\76\2\10\5\0\4\10\2\0\5\10\6\0"+
-    "\5\10\4\0\10\10\5\0\1\77\3\10\2\0\5\10"+
-    "\6\0\3\10\1\100\1\10\4\0\10\10\5\0\4\10"+
-    "\2\0\5\10\6\0\1\101\4\10\4\0\10\10\5\0"+
-    "\4\10\2\0\5\10\6\0\5\10\4\0\2\10\1\102"+
-    "\5\10\5\0\4\10\2\0\5\10\6\0\5\10\4\0"+
-    "\6\10\1\62\1\10\5\0\4\10\2\0\5\10\6\0"+
-    "\5\10\4\0\6\10\1\103\1\10\5\0\4\10\2\0"+
-    "\5\10\6\0\3\10\1\104\1\10\4\0\10\10\5\0"+
-    "\4\10\2\0\5\10\6\0\4\10\1\105\4\0\10\10"+
-    "\5\0\4\10\2\0\5\10\6\0\5\10\4\0\10\10"+
-    "\5\0\1\106\3\10\2\0\5\10\6\0\2\10\1\107"+
-    "\2\10\4\0\10\10\5\0\4\10\2\0\5\10\6\0"+
-    "\4\10\1\110\4\0\10\10\5\0\4\10\2\0\5\10"+
-    "\6\0\5\10\4\0\10\10\5\0\1\60\3\10\2\0"+
-    "\5\10\1\0";
+    "\1\2\1\3\1\4\1\5\1\4\1\6\1\7\1\4"+
+    "\1\10\1\11\1\4\1\12\1\13\1\4\1\14\1\4"+
+    "\1\15\2\4\1\2\1\16\1\17\1\20\1\21\1\22"+
+    "\1\23\1\24\1\25\1\26\1\27\1\30\1\31\1\32"+
+    "\1\33\1\34\1\35\1\36\46\0\1\4\1\37\22\4"+
+    "\21\0\24\4\21\0\16\4\1\40\5\4\21\0\11\4"+
+    "\1\41\12\4\21\0\3\4\1\42\20\4\21\0\12\4"+
+    "\1\43\11\4\21\0\6\4\1\44\15\4\21\0\13\4"+
+    "\1\45\10\4\21\0\14\4\1\46\7\4\21\0\6\4"+
+    "\1\47\15\4\21\0\16\4\1\50\5\4\44\0\1\16"+
+    "\46\0\1\51\44\0\1\52\45\0\1\53\45\0\1\53"+
+    "\50\0\1\54\45\0\1\54\10\0\2\4\1\55\21\4"+
+    "\21\0\16\4\1\56\5\4\21\0\12\4\1\57\11\4"+
+    "\21\0\6\4\1\60\15\4\21\0\6\4\1\61\15\4"+
+    "\21\0\4\4\1\62\17\4\21\0\1\4\1\63\22\4"+
+    "\21\0\12\4\1\64\11\4\21\0\3\4\1\65\20\4"+
+    "\21\0\4\4\1\66\17\4\21\0\3\4\1\67\20\4"+
+    "\21\0\3\4\1\70\20\4\21\0\7\4\1\71\14\4"+
+    "\21\0\12\4\1\72\11\4\21\0\11\4\1\73\12\4"+
+    "\21\0\14\4\1\74\7\4\21\0\1\4\1\75\22\4"+
+    "\21\0\7\4\1\63\14\4\21\0\20\4\1\57\3\4"+
+    "\21\0\4\4\1\76\17\4\21\0\14\4\1\77\7\4"+
+    "\21\0\7\4\1\100\14\4\21\0\4\4\1\101\17\4"+
+    "\21\0\13\4\1\102\10\4\21\0\5\4\1\103\16\4"+
+    "\21\0\6\4\1\104\15\4\21\0\5\4\1\105\16\4"+
+    "\21\0\11\4\1\106\12\4\21\0\11\4\1\57\12\4"+
+    "\20\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[1989];
+    int [] result = new int[1813];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -218,11 +187,11 @@ class TokenLexer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\5\11\14\1\1\11\6\1\2\11\3\1\1\11"+
-    "\3\1\3\11\4\1\1\11\36\1";
+    "\1\0\1\11\20\1\1\11\4\1\7\11\12\1\4\11"+
+    "\32\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[72];
+    int [] result = new int[70];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -298,56 +267,51 @@ class TokenLexer {
   private int zzFinalHighSurrogate = 0;
 
   /* user code: */
-    public final int SEMICOLON;
-    public final int COMMA;
-    public final int OPEN_PARENTHESIS;
-    public final int CLOSE_PARENTHESIS;
+    public final int PUBLIC;
+    public final int CLASS;
+    public final int DEF_MAIN;
     public final int DEF_STATIC;
+    public final int ID;
+    public final int VAR_TYPE;
+    public final int BOOLEAN;
+    public final int INTEGER;
     public final int ASSIGN;
     public final int OP_ASSIGN;
     public final int LOOP;
-    
 	public final int ARITHMETIC;
     public final int RELATIONAL;
     public final int LOGICAL;
     public final int RETURN_TYPE;
     public final int RETURN;
+    public final int SEMICOLON;
+    public final int COMMA;
+    public final int OPEN_PARENTHESIS;
+    public final int CLOSE_PARENTHESIS;
     public final int OPEN_BRACKET;
     public final int CLOSE_BRACKET;
 
-    public final int PUBLIC;
-    public final int CLASS;
-    public final int DEF_MAIN;
-    public final int ID;
-    public final int VAR_TYPE;
-    public final int BOOLEAN;
-    public final int INTEGER;
-   
-    
-    public int semicolonCount;
-    public int commaCount;
-    public int openParenthesisCount;
-    public int closeParenthesisCount;
+    public int publicCount;
+    public int classCount;
+    public int mainCount;
     public int defStaticCount;
+    public int idCount;
+    public int var_typeCount;
+    public int booleanCount;
+    public int integerCount;
     public int assignCount;
     public int opAssignCount;
     public int loopCount;
-    
     public int arithmeticCount;
     public int relationalCount;
     public int logicalCount;
     public int return_typeCount;
     public int returnCount;
+    public int semicolonCount;
+    public int commaCount;
+    public int openParenthesisCount;
+    public int closeParenthesisCount;
     public int open_bracketCount;
-    public int close_bracketCount;
-
-    public int publicCount;
-    public int classCount;
-    public int mainCount;
-    public int idCount;
-    public int var_typeCount;
-    public int booleanCount;
-    public int integerCount;
+    public int close_bracketCount;  
 
 
   /**
@@ -356,34 +320,37 @@ class TokenLexer {
    * @param   in  the java.io.Reader to read input from.
    */
   TokenLexer(java.io.Reader in) {
-      SEMICOLON = 1;
-    COMMA = 2;
-    OPEN_PARENTHESIS = 3;
-    CLOSE_PARENTHESIS = 4;
-    DEF_STATIC = 5;
-    ASSIGN = 6;
-    OP_ASSIGN = 7;
-    LOOP = 8;
-   	ARITHMETIC = 9;
-    RELATIONAL = 10;
-    LOGICAL = 11;
-    RETURN_TYPE = 12;
-    RETURN = 13;
-    OPEN_BRACKET = 14;
-    CLOSE_BRACKET = 15;
-    PUBLIC = 16;
-    CLASS = 17;
-    DEF_MAIN = 18;
-    ID = 19;
-    VAR_TYPE = 20;
-    BOOLEAN = 21;
-    INTEGER = 22;
-
-    semicolonCount = 0;
-    commaCount = 0;
-    openParenthesisCount = 0;
-    closeParenthesisCount = 0;
+      PUBLIC = 1;
+    CLASS = 2;
+    DEF_MAIN = 3;
+    DEF_STATIC = 4;
+    ID = 5;
+    VAR_TYPE = 6;
+    BOOLEAN = 7;
+    INTEGER = 8;
+    ASSIGN = 9;
+    OP_ASSIGN = 10;
+    LOOP = 11;
+   	ARITHMETIC = 12;
+    RELATIONAL = 13;
+    LOGICAL = 14;
+    RETURN_TYPE = 15;
+    RETURN = 16;
+    SEMICOLON = 17;
+    COMMA = 18;
+    OPEN_PARENTHESIS = 19;
+    CLOSE_PARENTHESIS = 20;
+    OPEN_BRACKET = 21;
+    CLOSE_BRACKET = 22;
+    
+    publicCount = 0;
+    classCount = 0;
+    mainCount = 0;
     defStaticCount = 0;
+    idCount = 0;
+    var_typeCount = 0;
+    booleanCount = 0;
+    integerCount = 0;
     assignCount = 0;
     opAssignCount = 0;
     loopCount = 0;
@@ -392,15 +359,12 @@ class TokenLexer {
     logicalCount = 0;
     return_typeCount = 0;
     returnCount = 0;
+    semicolonCount = 0;
+    commaCount = 0;
+    openParenthesisCount = 0;
+    closeParenthesisCount = 0;
     open_bracketCount = 0;
     close_bracketCount = 0;
-    publicCount = 0;
-    classCount = 0;
-    mainCount = 0;
-    idCount = 0;
-    var_typeCount = 0;
-    booleanCount = 0;
-    integerCount = 0;
     this.zzReader = in;
   }
 
@@ -609,11 +573,14 @@ class TokenLexer {
       zzEOFDone = true;
         System.out.println("-----FIN DEL PROGRAMA-----");
     System.out.println("Recuento de tokens:");
-    System.out.println("SEMICOLON: " + semicolonCount);
-    System.out.println("COMMA: " + commaCount);
-    System.out.println("OPEN_PARENTHESIS: " + openParenthesisCount);
-    System.out.println("CLOSE_PARENTHESIS: " + closeParenthesisCount);
+    System.out.println("PUBLIC: " + publicCount);
+    System.out.println("CLASS: " + classCount);
+    System.out.println("DEF_MAIN: " + mainCount);
     System.out.println("DEF_STATIC: " + defStaticCount);
+    System.out.println("ID:" + idCount);
+    System.out.println("VAR_TYPE:" + var_typeCount);
+    System.out.println("BOOLEAN:" + booleanCount);
+    System.out.println("INTEGER:" + integerCount);
     System.out.println("ASSIGN: " + assignCount);
     System.out.println("OP_ASSIGN: " + opAssignCount);
     System.out.println("ARITHMETIC: " + arithmeticCount);
@@ -621,16 +588,12 @@ class TokenLexer {
     System.out.println("LOGICAL: " + logicalCount);
     System.out.println("RETURN_TYPE: " + return_typeCount);
     System.out.println("RETURN: " + returnCount);
+    System.out.println("SEMICOLON: " + semicolonCount);
+    System.out.println("COMMA: " + commaCount);
+    System.out.println("OPEN_PARENTHESIS: " + openParenthesisCount);
+    System.out.println("CLOSE_PARENTHESIS: " + closeParenthesisCount);
     System.out.println("OPEN_BRACKET: " + open_bracketCount);
     System.out.println("CLOSE_BRACKET: " + close_bracketCount);
-    System.out.println("PUBLIC: " + publicCount);
-    System.out.println("CLASS: " + classCount);
-    System.out.println("DEF_MAIN: " + mainCount);
-    System.out.println("ID:" + idCount);
-    System.out.println("VAR_TYPE:" + var_typeCount);
-    System.out.println("BOOLEAN:" + booleanCount);
-    System.out.println("INTEGER:" + integerCount);
-
 
     }
   }
@@ -734,62 +697,62 @@ class TokenLexer {
             // fall through
           case 23: break;
           case 2: 
-            { semicolonCount++; System.out.println("TOKEN: SEMICOLON => " + yytext());
+            { idCount++; System.out.println("TOKEN: ID => " + yytext());
             } 
             // fall through
           case 24: break;
           case 3: 
-            { commaCount++; System.out.println("TOKEN: COMMA => " + yytext());
+            { integerCount++; System.out.println("TOKEN: INTEGER => " + yytext());
             } 
             // fall through
           case 25: break;
           case 4: 
-            { openParenthesisCount++; System.out.println("TOKEN: OPEN_PARENTHESIS => " + yytext());
+            { assignCount++; System.out.println("TOKEN: ASSIGN => " + yytext());
             } 
             // fall through
           case 26: break;
           case 5: 
-            { closeParenthesisCount++; System.out.println("TOKEN: CLOSE_PARENTHESIS => " + yytext());
+            { arithmeticCount++; System.out.println("TOKEN: ARITHMETIC => " + yytext());
             } 
             // fall through
           case 27: break;
           case 6: 
-            { idCount++; System.out.println("TOKEN: ID => " + yytext());
+            { relationalCount++; System.out.println("TOKEN: RELATIONAL => " + yytext());
             } 
             // fall through
           case 28: break;
           case 7: 
-            { assignCount++; System.out.println("TOKEN: ASSIGN => " + yytext());
+            { logicalCount++; System.out.println("TOKEN: LOGICAL => " + yytext());
             } 
             // fall through
           case 29: break;
           case 8: 
-            { arithmeticCount++; System.out.println("TOKEN: ARITHMETIC => " + yytext());
+            { semicolonCount++; System.out.println("TOKEN: SEMICOLON => " + yytext());
             } 
             // fall through
           case 30: break;
           case 9: 
-            { relationalCount++; System.out.println("TOKEN: RELATIONAL => " + yytext());
+            { commaCount++; System.out.println("TOKEN: COMMA => " + yytext());
             } 
             // fall through
           case 31: break;
           case 10: 
-            { logicalCount++; System.out.println("TOKEN: LOGICAL => " + yytext());
+            { openParenthesisCount++; System.out.println("TOKEN: OPEN_PARENTHESIS => " + yytext());
             } 
             // fall through
           case 32: break;
           case 11: 
-            { open_bracketCount++; System.out.println("TOKEN: OPEN_BRACKET => " + yytext());
+            { closeParenthesisCount++; System.out.println("TOKEN: CLOSE_PARENTHESIS => " + yytext());
             } 
             // fall through
           case 33: break;
           case 12: 
-            { close_bracketCount++; System.out.println("TOKEN: CLOSE_BRACKET => " + yytext());
+            { open_bracketCount++; System.out.println("TOKEN: OPEN_BRACKET => " + yytext());
             } 
             // fall through
           case 34: break;
           case 13: 
-            { integerCount++; System.out.println("TOKEN: INTEGER => " + yytext());
+            { close_bracketCount++; System.out.println("TOKEN: CLOSE_BRACKET => " + yytext());
             } 
             // fall through
           case 35: break;
@@ -809,12 +772,12 @@ class TokenLexer {
             // fall through
           case 38: break;
           case 17: 
-            { loopCount++; System.out.println("TOKEN: LOOP => " + yytext());
+            { mainCount++; System.out.println("TOKEN: DEF_MAIN => " + yytext());
             } 
             // fall through
           case 39: break;
           case 18: 
-            { mainCount++; System.out.println("TOKEN: DEF_MAIN => " + yytext());
+            { booleanCount++; System.out.println("TOKEN: BOOLEAN => " + yytext());
             } 
             // fall through
           case 40: break;
@@ -824,17 +787,17 @@ class TokenLexer {
             // fall through
           case 41: break;
           case 20: 
-            { defStaticCount++; System.out.println("TOKEN: DEF_STATIC => " + yytext());
+            { publicCount++; System.out.println("TOKEN: PUBLIC => " + yytext());
             } 
             // fall through
           case 42: break;
           case 21: 
-            { returnCount++; System.out.println("TOKEN: RETURN => " + yytext());
+            { defStaticCount++; System.out.println("TOKEN: DEF_STATIC => " + yytext());
             } 
             // fall through
           case 43: break;
           case 22: 
-            { publicCount++; System.out.println("TOKEN: PUBLIC => " + yytext());
+            { returnCount++; System.out.println("TOKEN: RETURN => " + yytext());
             } 
             // fall through
           case 44: break;
