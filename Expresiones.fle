@@ -5,87 +5,85 @@
 %8bit
 
 %{
-    public final int SEMICOLON;
-    public final int COMMA;
-    public final int OPEN_PARENTHESIS;
-    public final int CLOSE_PARENTHESIS;
+    public final int PUBLIC;
+    public final int CLASS;
+    public final int DEF_MAIN;
     public final int DEF_STATIC;
+    public final int ID;
+    public final int VAR_TYPE;
+    public final int BOOLEAN;
+    public final int INTEGER;
     public final int ASSIGN;
     public final int OP_ASSIGN;
     public final int LOOP;
-    
 	public final int ARITHMETIC;
     public final int RELATIONAL;
     public final int LOGICAL;
     public final int RETURN_TYPE;
     public final int RETURN;
+    public final int SEMICOLON;
+    public final int COMMA;
+    public final int OPEN_PARENTHESIS;
+    public final int CLOSE_PARENTHESIS;
     public final int OPEN_BRACKET;
     public final int CLOSE_BRACKET;
 
-    public final int PUBLIC;
-    public final int CLASS;
-    public final int DEF_MAIN;
-    public final int ID;
-    public final int VAR_TYPE;
-    public final int BOOLEAN;
-    public final int INTEGER;
-   
-    
-    public int semicolonCount;
-    public int commaCount;
-    public int openParenthesisCount;
-    public int closeParenthesisCount;
+    public int publicCount;
+    public int classCount;
+    public int mainCount;
     public int defStaticCount;
+    public int idCount;
+    public int var_typeCount;
+    public int booleanCount;
+    public int integerCount;
     public int assignCount;
     public int opAssignCount;
     public int loopCount;
-    
     public int arithmeticCount;
     public int relationalCount;
     public int logicalCount;
     public int return_typeCount;
     public int returnCount;
+    public int semicolonCount;
+    public int commaCount;
+    public int openParenthesisCount;
+    public int closeParenthesisCount;
     public int open_bracketCount;
-    public int close_bracketCount;
-
-    public int publicCount;
-    public int classCount;
-    public int mainCount;
-    public int idCount;
-    public int var_typeCount;
-    public int booleanCount;
-    public int integerCount;
+    public int close_bracketCount;  
 %}
 
 %init{
-    SEMICOLON = 1;
-    COMMA = 2;
-    OPEN_PARENTHESIS = 3;
-    CLOSE_PARENTHESIS = 4;
-    DEF_STATIC = 5;
-    ASSIGN = 6;
-    OP_ASSIGN = 7;
-    LOOP = 8;
-   	ARITHMETIC = 9;
-    RELATIONAL = 10;
-    LOGICAL = 11;
-    RETURN_TYPE = 12;
-    RETURN = 13;
-    OPEN_BRACKET = 14;
-    CLOSE_BRACKET = 15;
-    PUBLIC = 16;
-    CLASS = 17;
-    DEF_MAIN = 18;
-    ID = 19;
-    VAR_TYPE = 20;
-    BOOLEAN = 21;
-    INTEGER = 22;
-
-    semicolonCount = 0;
-    commaCount = 0;
-    openParenthesisCount = 0;
-    closeParenthesisCount = 0;
+    PUBLIC = 1;
+    CLASS = 2;
+    DEF_MAIN = 3;
+    DEF_STATIC = 4;
+    ID = 5;
+    VAR_TYPE = 6;
+    BOOLEAN = 7;
+    INTEGER = 8;
+    ASSIGN = 9;
+    OP_ASSIGN = 10;
+    LOOP = 11;
+   	ARITHMETIC = 12;
+    RELATIONAL = 13;
+    LOGICAL = 14;
+    RETURN_TYPE = 15;
+    RETURN = 16;
+    SEMICOLON = 17;
+    COMMA = 18;
+    OPEN_PARENTHESIS = 19;
+    CLOSE_PARENTHESIS = 20;
+    OPEN_BRACKET = 21;
+    CLOSE_BRACKET = 22;
+    
+    publicCount = 0;
+    classCount = 0;
+    mainCount = 0;
     defStaticCount = 0;
+    idCount = 0;
+    var_typeCount = 0;
+    booleanCount = 0;
+    integerCount = 0;
     assignCount = 0;
     opAssignCount = 0;
     loopCount = 0;
@@ -94,25 +92,25 @@
     logicalCount = 0;
     return_typeCount = 0;
     returnCount = 0;
+    semicolonCount = 0;
+    commaCount = 0;
+    openParenthesisCount = 0;
+    closeParenthesisCount = 0;
     open_bracketCount = 0;
     close_bracketCount = 0;
-    publicCount = 0;
-    classCount = 0;
-    mainCount = 0;
-    idCount = 0;
-    var_typeCount = 0;
-    booleanCount = 0;
-    integerCount = 0;
 %init}
 
 %eof{
     System.out.println("-----FIN DEL PROGRAMA-----");
     System.out.println("Recuento de tokens:");
-    System.out.println("SEMICOLON: " + semicolonCount);
-    System.out.println("COMMA: " + commaCount);
-    System.out.println("OPEN_PARENTHESIS: " + openParenthesisCount);
-    System.out.println("CLOSE_PARENTHESIS: " + closeParenthesisCount);
+    System.out.println("PUBLIC: " + publicCount);
+    System.out.println("CLASS: " + classCount);
+    System.out.println("DEF_MAIN: " + mainCount);
     System.out.println("DEF_STATIC: " + defStaticCount);
+    System.out.println("ID:" + idCount);
+    System.out.println("VAR_TYPE:" + var_typeCount);
+    System.out.println("BOOLEAN:" + booleanCount);
+    System.out.println("INTEGER:" + integerCount);
     System.out.println("ASSIGN: " + assignCount);
     System.out.println("OP_ASSIGN: " + opAssignCount);
     System.out.println("ARITHMETIC: " + arithmeticCount);
@@ -120,42 +118,37 @@
     System.out.println("LOGICAL: " + logicalCount);
     System.out.println("RETURN_TYPE: " + return_typeCount);
     System.out.println("RETURN: " + returnCount);
+    System.out.println("SEMICOLON: " + semicolonCount);
+    System.out.println("COMMA: " + commaCount);
+    System.out.println("OPEN_PARENTHESIS: " + openParenthesisCount);
+    System.out.println("CLOSE_PARENTHESIS: " + closeParenthesisCount);
     System.out.println("OPEN_BRACKET: " + open_bracketCount);
     System.out.println("CLOSE_BRACKET: " + close_bracketCount);
-    System.out.println("PUBLIC: " + publicCount);
-    System.out.println("CLASS: " + classCount);
-    System.out.println("DEF_MAIN: " + mainCount);
-    System.out.println("ID:" + idCount);
-    System.out.println("VAR_TYPE:" + var_typeCount);
-    System.out.println("BOOLEAN:" + booleanCount);
-    System.out.println("INTEGER:" + integerCount);
-
 %eof}
 
 %%
-
-";" { semicolonCount++; System.out.println("TOKEN: SEMICOLON => " + yytext()); }
-"," { commaCount++; System.out.println("TOKEN: COMMA => " + yytext()); }
-"(" { openParenthesisCount++; System.out.println("TOKEN: OPEN_PARENTHESIS => " + yytext()); }
-")" { closeParenthesisCount++; System.out.println("TOKEN: CLOSE_PARENTHESIS => " + yytext()); }
+"public" {publicCount++; System.out.println("TOKEN: PUBLIC => " + yytext()); }
+"class" {classCount++; System.out.println("TOKEN: CLASS => " + yytext()); }
+"main" {mainCount++; System.out.println("TOKEN: DEF_MAIN => " + yytext()); }
 "static" { defStaticCount++; System.out.println("TOKEN: DEF_STATIC => " + yytext()); }
+"true" | "false" {booleanCount++; System.out.println("TOKEN: BOOLEAN => " + yytext()); }
+"int" | "boolean" | "void" {return_typeCount++; System.out.println("TOKEN: RETURN_TYPE => " + yytext()); }
+"int" | "boolean" {var_typeCount++; System.out.println("TOKEN: VAR_TYPE => " + yytext()); }
+"return" {returnCount++; System.out.println("TOKEN: RETURN => " + yytext()); }
+[a-zA-Z][a-zA-Z0-9_]* {idCount++; System.out.println("TOKEN: ID => " + yytext()); }
+[0-9]*[0-9] {integerCount++; System.out.println("TOKEN: INTEGER => " + yytext()); }
 ":=" | "=" { assignCount++; System.out.println("TOKEN: ASSIGN => " + yytext()); }
 "++" | "--" { opAssignCount++; System.out.println("TOKEN: OP_ASSIGN => " + yytext()); }
 "for" | "while" | "dowhile" { loopCount++; System.out.println("TOKEN: LOOP => " + yytext()); }
 "+" | "-" |  "*" | "/" {arithmeticCount++; System.out.println("TOKEN: ARITHMETIC => " + yytext()); } 
 "<" | "<=" | ">" | ">=" | "==" | "!="  {relationalCount++; System.out.println("TOKEN: RELATIONAL => " + yytext()); }
 "&&" | "||" | "!" {logicalCount++; System.out.println("TOKEN: LOGICAL => " + yytext()); }
-"int" | "boolean" | "void" {return_typeCount++; System.out.println("TOKEN: RETURN_TYPE => " + yytext()); }
-"return" {returnCount++; System.out.println("TOKEN: RETURN => " + yytext()); }
+";" { semicolonCount++; System.out.println("TOKEN: SEMICOLON => " + yytext()); }
+"," { commaCount++; System.out.println("TOKEN: COMMA => " + yytext()); }
+"(" { openParenthesisCount++; System.out.println("TOKEN: OPEN_PARENTHESIS => " + yytext()); }
+")" { closeParenthesisCount++; System.out.println("TOKEN: CLOSE_PARENTHESIS => " + yytext()); }
 "{" {open_bracketCount++; System.out.println("TOKEN: OPEN_BRACKET => " + yytext()); }
 "}" {close_bracketCount++; System.out.println("TOKEN: CLOSE_BRACKET => " + yytext()); }
-"public" {publicCount++; System.out.println("TOKEN: PUBLIC => " + yytext()); }
-"class" {classCount++; System.out.println("TOKEN: CLASS => " + yytext()); }
-"main" {mainCount++; System.out.println("TOKEN: DEF_MAIN => " + yytext()); }
-[a-zA-Z][a-zA-Z0-9_]* {idCount++; System.out.println("TOKEN: ID => " + yytext()); }
-"int" | "boolean" {var_typeCount++; System.out.println("TOKEN: VAR_TYPE => " + yytext()); }
-"true" | "false" {booleanCount++; System.out.println("TOKEN: BOOLEAN => " + yytext()); }
-[0-9]*[0-9] {integerCount++; System.out.println("TOKEN: INTEGER => " + yytext()); }
 [^ \t\n\r\f] {}   // Ignorar espacios en blanco y caracteres de control
 
 
