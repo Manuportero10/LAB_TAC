@@ -1,0 +1,70 @@
+
+import java_cup.runtime.*;
+import java.io.*;
+
+parser code {:
+	public static void main(String args[]) throws Exception {
+
+ 		FileInputStream stream = new java.io.FileInputStream(args[0]);
+       		Reader reader = new java.io.InputStreamReader(stream);
+
+		try{
+			new parser(new Yylex(reader)).parse();
+		}
+		catch ( Exception e) {
+			System.out.println("Analisis INCORRECTO !!");
+			System.exit(1);
+		}
+		System.out.println("Analisis Correcto ");
+	
+		}
+:}
+
+terminal PUBLIC, CLASS, ID, OPEN_BRACKET, CLOSE_BRACKET,OPEN_PARENTHESIS,
+CLOSE_PARENTHESIS,STATIC,VOID,MAIN,FOR,ASSIGN,OP_ASSIGN,VAR_TYPE,RETURN,COMMA,SEMICOLON;
+
+terminal Integer INTEGER;
+terminal Boolean BOOLEAN;
+
+non terminal def_class, lista_metodos, metodo, lista_args_cab, lista_args_llam, metodo_main, metodo_void, metodo_var
+return, llamada_func, lista_instr, def_var, assign, op_n_assign, for;
+
+non terminal Integer expr_ari;
+not terminal Boolean expr_log;
+
+def_class ::= PUBLIC CLASS ID OPEN_BRACKET lista_metodos CLOSE_BRACKET;
+
+lista_metodos ::= metodo lista_metodos | metodo | /*EMPTY*/;
+
+metodo ::= metodo_main | metodo_void | metodo_var;
+
+lista_args_cab ::= VAR_TYPE ID COMMA lista_args
+				| VAR_TYPE ID;
+				
+lista_args_llam ::= ID COMMA lista_args_llam | ID;
+
+metodo_main ::= PUBLIC STATIC VOID MAIN OPEN_PARENTHESIS CLOSE_PARENTHESIS OPEN_BRACKET lista_instr CLOSE_BRACKET;
+
+metodo_void ::= PUBLIC STATIC VOID ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARENTHESIS OPEN_BRACKET lista_instr CLOSE_BRACKET;
+
+metodo_var ::= PUBLIC STATIC VAR_TYPE ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARENTHESIS OPEN_BRACKET lista_instr return CLOSE_BRACKET;
+
+return ::= RETURN expr_ari SEMICOLON | RETURN expr_log SEMICOLON | RETURN llamada_func SEMICOLON;
+
+llamada_func ::= ID OPEN_PARENTHESIS lista_args_llam CLOSE_PARENTHESIS;
+
+lista_instr ::= def_var lista_instr | assign lista_instr | for lista_instr | op_n_assign lista_instr | llamada_func lista_instr
+				| def_var | assign | for | op_n_assign | llamada_func;
+				
+def_var ::= VAR_TYPE ID SEMICOLON | VAR_TYPE assign;
+
+assign ::= ID ASSIGN expr_ari SEMICOLON | ID ASSIGN expr_log SEMICOLON | ID ASSIGN llamada_func SEMICOLON;
+
+op_n_assign ::= ID OP_ASSIGN SEMICOLON;
+
+for ::= FOR OPEN_PARENTHESIS VAR_TYPE ID ASSIGN INTEGER SEMICOLON 
+		ID RELATIONAL ID SEMICOLON  
+		ID OP_ASSIGN CLOSE_PARENTHESIS OPEN_BRACKET 
+		lista_instr 
+		CLOSE_BRACKET; 
+
