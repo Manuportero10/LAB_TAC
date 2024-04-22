@@ -27,7 +27,7 @@ terminal Integer INTEGER;
 terminal Boolean BOOLEAN;
 
 non terminal def_class, lista_metodos, metodo, lista_args_cab, lista_args_llam, metodo_main, metodo_void, metodo_var
-return, llamada_func, lista_instr, def_var, assign, op_n_assign, for, while, if;
+retorno, llamada_func, lista_instr, def_var, assign, op_n_assign, bucle_for, bucle_while, expresion_if;
 
 non terminal Integer expr_ari;
 not terminal Boolean expr_log;
@@ -52,9 +52,9 @@ metodo_main ::= PUBLIC STATIC VOID MAIN OPEN_PARENTHESIS CLOSE_PARENTHESIS OPEN_
 
 metodo_void ::= PUBLIC STATIC VOID ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARENTHESIS OPEN_BRACKET lista_instr CLOSE_BRACKET;
 
-metodo_var ::= PUBLIC STATIC VAR_TYPE ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARENTHESIS OPEN_BRACKET lista_instr return CLOSE_BRACKET;
+metodo_var ::= PUBLIC STATIC VAR_TYPE ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARENTHESIS OPEN_BRACKET lista_instr retorno CLOSE_BRACKET;
 
-return ::= RETURN expr_ari SEMICOLON 
+retorno ::= RETURN expr_ari SEMICOLON 
 		   | RETURN expr_log SEMICOLON 
 		   | RETURN llamada_func SEMICOLON;
 
@@ -62,16 +62,16 @@ llamada_func ::= ID OPEN_PARENTHESIS lista_args_llam CLOSE_PARENTHESIS;
 
 lista_instr ::= def_var lista_instr 
 			    | assign lista_instr 
-				| for lista_instr 
+				| bucle_for lista_instr 
 				| op_n_assign lista_instr 
 				| llamada_func lista_instr
 				| def_var 
 				| assign 
-				| for 
+				| bucle_for 
 				| op_n_assign 
 				| llamada_func 
-				| while 
-				| if;
+				| bucle_while 
+				| expresion_if;
 				
 def_var ::= VAR_TYPE ID SEMICOLON 
 		    | VAR_TYPE assign;
@@ -82,18 +82,18 @@ assign ::= ID ASSIGN expr_ari SEMICOLON
 
 op_n_assign ::= ID OP_ASSIGN SEMICOLON;
 
-for ::= FOR OPEN_PARENTHESIS VAR_TYPE ID ASSIGN INTEGER SEMICOLON 
+bucle_for ::= FOR OPEN_PARENTHESIS VAR_TYPE ID ASSIGN INTEGER SEMICOLON 
 		ID RELATIONAL ID SEMICOLON  
 		ID OP_ASSIGN CLOSE_PARENTHESIS OPEN_BRACKET 
 		lista_instr 
 		CLOSE_BRACKET; 
 
-while ::= WHILE OPEN_PARENTHESIS expr_log CLOSE_PARENTHESIS 
+bucle_while ::= WHILE OPEN_PARENTHESIS expr_log CLOSE_PARENTHESIS 
 		  OPEN_BRACKET 
 		  lista_instr 
 		  CLOSE_BRACKET;
 
-if ::= IF OPEN_PARENTHESIS expr_log CLOSE_PARENTHESIS 
+expresion_if ::= IF OPEN_PARENTHESIS expr_log CLOSE_PARENTHESIS 
        OPEN_BRACKET 
        lista_instr 
        CLOSE_BRACKET;
