@@ -27,7 +27,7 @@ terminal Integer INTEGER;
 terminal Boolean BOOLEAN;
 
 non terminal def_class, lista_metodos, metodo, lista_args_cab, lista_args_llam, metodo_main, metodo_void, metodo_var
-return, llamada_func, lista_instr, def_var, assign, op_n_assign, for;
+return, llamada_func, lista_instr, def_var, assign, op_n_assign, for, while, if;
 
 non terminal Integer expr_ari;
 not terminal Boolean expr_log;
@@ -54,7 +54,7 @@ return ::= RETURN expr_ari SEMICOLON | RETURN expr_log SEMICOLON | RETURN llamad
 llamada_func ::= ID OPEN_PARENTHESIS lista_args_llam CLOSE_PARENTHESIS;
 
 lista_instr ::= def_var lista_instr | assign lista_instr | for lista_instr | op_n_assign lista_instr | llamada_func lista_instr
-				| def_var | assign | for | op_n_assign | llamada_func;
+				| def_var | assign | for | op_n_assign | llamada_func | while | if;
 				
 def_var ::= VAR_TYPE ID SEMICOLON | VAR_TYPE assign;
 
@@ -67,4 +67,19 @@ for ::= FOR OPEN_PARENTHESIS VAR_TYPE ID ASSIGN INTEGER SEMICOLON
 		ID OP_ASSIGN CLOSE_PARENTHESIS OPEN_BRACKET 
 		lista_instr 
 		CLOSE_BRACKET; 
+
+while ::= WHILE OPEN_PARENTHESIS expr_log CLOSE_PARENTHESIS 
+		  OPEN_BRACKET 
+		  lista_instr 
+		  CLOSE_BRACKET;
+
+if ::= IF OPEN_PARENTHESIS expr_log CLOSE_PARENTHESIS 
+       OPEN_BRACKET 
+       lista_instr 
+       CLOSE_BRACKET;
+
+Integer expr_ari ::= INTEGER 
+                | ID
+                | expr_ari ARITHMETIC expr_ari 
+                | OPEN_PARENTHESIS expr_ari CLOSE_PARENTHESIS;
 
