@@ -34,14 +34,19 @@ not terminal Boolean expr_log;
 
 def_class ::= PUBLIC CLASS ID OPEN_BRACKET lista_metodos CLOSE_BRACKET;
 
-lista_metodos ::= metodo lista_metodos | metodo | /*EMPTY*/;
+lista_metodos ::= metodo lista_metodos 
+				  | metodo 
+				  | /*EMPTY*/;
 
-metodo ::= metodo_main | metodo_void | metodo_var;
+metodo ::= metodo_main 
+		   | metodo_void 
+		   | metodo_var;
 
 lista_args_cab ::= VAR_TYPE ID COMMA lista_args
-				| VAR_TYPE ID;
+				   | VAR_TYPE ID;
 				
-lista_args_llam ::= ID COMMA lista_args_llam | ID;
+lista_args_llam ::= ID COMMA lista_args_llam 
+					| ID;
 
 metodo_main ::= PUBLIC STATIC VOID MAIN OPEN_PARENTHESIS CLOSE_PARENTHESIS OPEN_BRACKET lista_instr CLOSE_BRACKET;
 
@@ -49,16 +54,31 @@ metodo_void ::= PUBLIC STATIC VOID ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARE
 
 metodo_var ::= PUBLIC STATIC VAR_TYPE ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARENTHESIS OPEN_BRACKET lista_instr return CLOSE_BRACKET;
 
-return ::= RETURN expr_ari SEMICOLON | RETURN expr_log SEMICOLON | RETURN llamada_func SEMICOLON;
+return ::= RETURN expr_ari SEMICOLON 
+		   | RETURN expr_log SEMICOLON 
+		   | RETURN llamada_func SEMICOLON;
 
 llamada_func ::= ID OPEN_PARENTHESIS lista_args_llam CLOSE_PARENTHESIS;
 
-lista_instr ::= def_var lista_instr | assign lista_instr | for lista_instr | op_n_assign lista_instr | llamada_func lista_instr
-				| def_var | assign | for | op_n_assign | llamada_func | while | if;
+lista_instr ::= def_var lista_instr 
+			    | assign lista_instr 
+				| for lista_instr 
+				| op_n_assign lista_instr 
+				| llamada_func lista_instr
+				| def_var 
+				| assign 
+				| for 
+				| op_n_assign 
+				| llamada_func 
+				| while 
+				| if;
 				
-def_var ::= VAR_TYPE ID SEMICOLON | VAR_TYPE assign;
+def_var ::= VAR_TYPE ID SEMICOLON 
+		    | VAR_TYPE assign;
 
-assign ::= ID ASSIGN expr_ari SEMICOLON | ID ASSIGN expr_log SEMICOLON | ID ASSIGN llamada_func SEMICOLON;
+assign ::= ID ASSIGN expr_ari SEMICOLON 
+		   | ID ASSIGN expr_log SEMICOLON 
+		   | ID ASSIGN llamada_func SEMICOLON;
 
 op_n_assign ::= ID OP_ASSIGN SEMICOLON;
 
@@ -79,7 +99,7 @@ if ::= IF OPEN_PARENTHESIS expr_log CLOSE_PARENTHESIS
        CLOSE_BRACKET;
 
 Integer expr_ari ::= INTEGER 
-                | ID
-                | expr_ari ARITHMETIC expr_ari 
-                | OPEN_PARENTHESIS expr_ari CLOSE_PARENTHESIS;
+                	 | ID
+                	 | expr_ari ARITHMETIC expr_ari 
+                	 | OPEN_PARENTHESIS expr_ari CLOSE_PARENTHESIS;
 
