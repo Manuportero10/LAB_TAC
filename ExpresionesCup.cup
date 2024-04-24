@@ -23,8 +23,8 @@ parser code {:
 terminal PUBLIC, CLASS, ID, OPEN_BRACKET, CLOSE_BRACKET,OPEN_PARENTHESIS,
 CLOSE_PARENTHESIS,STATIC,VOID,MAIN,FOR,ASSIGN,OP_ASSIGN,VAR_TYPE,RETURN,COMMA,SEMICOLON;
 
-terminal Integer INTEGER;
-terminal Boolean BOOLEAN;
+terminal Integer NUMERO;
+terminal Boolean LOGICO;
 
 non terminal def_class, lista_metodos, metodo, lista_args_cab, lista_args_llam, metodo_main, metodo_void, metodo_var
 retorno, llamada_func, lista_instr, def_var, assign, op_n_assign, bucle_for, bucle_while, expresion_if;
@@ -35,8 +35,8 @@ not terminal Boolean expr_log;
 def_class ::= PUBLIC CLASS ID OPEN_BRACKET lista_metodos CLOSE_BRACKET;
 
 lista_metodos ::= metodo lista_metodos 
-				  | metodo 
-				  | /*EMPTY*/;
+				  | metodo;
+				 
 
 metodo ::= metodo_main 
 		   | metodo_void 
@@ -82,7 +82,7 @@ assign ::= ID ASSIGN expr_ari SEMICOLON
 
 op_n_assign ::= ID OP_ASSIGN SEMICOLON;
 
-bucle_for ::= FOR OPEN_PARENTHESIS VAR_TYPE ID ASSIGN INTEGER SEMICOLON 
+bucle_for ::= FOR OPEN_PARENTHESIS VAR_TYPE ID ASSIGN NUMERO SEMICOLON 
 		ID RELATIONAL ID SEMICOLON  
 		ID OP_ASSIGN CLOSE_PARENTHESIS OPEN_BRACKET 
 		lista_instr 
@@ -98,7 +98,7 @@ expresion_if ::= IF OPEN_PARENTHESIS expr_log CLOSE_PARENTHESIS
        lista_instr 
        CLOSE_BRACKET;
 
-Integer expr_ari ::= INTEGER 
+Integer expr_ari ::= NUMERO 
                 	 | ID
                 	 | expr_ari ARITHMETIC expr_ari 
                 	 | OPEN_PARENTHESIS expr_ari CLOSE_PARENTHESIS;
