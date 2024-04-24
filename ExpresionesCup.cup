@@ -24,27 +24,17 @@ terminal PUBLIC, CLASS, MAIN, STATIC, VOID, FOR, WHILE, DO, VAR_TYPE, RETURN,
 ID, ASSIGN, OP_ASSIGN, ARITHMETIC, RELATIONAL, LOGICAL, NUMERO, LOGICO, 
 SEMICOLON, COMMA, OPEN_PARENTHESIS, CLOSE_PARENTHESIS, OPEN_BRACKET, CLOSE_BRACKET, IF;
 
-<<<<<<< HEAD
 non terminal def_class, lista_metodos, metodo, lista_args_cab, lista_args_llam, metodo_main, metodo_void, metodo_var,
 retorno, llamada_func, lista_instr, def_var, assign, op_n_assign, bucle_for, bucle_while, expresion_if,
 expr_ari,expr_log;
-=======
-terminal Integer NUMERO;
-terminal Boolean LOGICO;
->>>>>>> 34df1678d44625c590599dc80ac0dea8f6703a15
 
 precedence left ARITHMETIC;
 
 def_class ::= PUBLIC CLASS ID OPEN_BRACKET lista_metodos CLOSE_BRACKET;
 
 lista_metodos ::= metodo lista_metodos 
-<<<<<<< HEAD
 				  | ; 
 
-=======
-				  | metodo;
-				 
->>>>>>> 34df1678d44625c590599dc80ac0dea8f6703a15
 
 metodo ::= metodo_main 
 		   | metodo_void 
@@ -112,15 +102,8 @@ expresion_if ::= IF OPEN_PARENTHESIS expr_log CLOSE_PARENTHESIS
        lista_instr 
        CLOSE_BRACKET;
 
-<<<<<<< HEAD
 expr_ari ::= NUMERO 
              | ID
              | expr_ari ARITHMETIC expr_ari 
              | OPEN_PARENTHESIS expr_ari CLOSE_PARENTHESIS;
-=======
-Integer expr_ari ::= NUMERO 
-                	 | ID
-                	 | expr_ari ARITHMETIC expr_ari 
-                	 | OPEN_PARENTHESIS expr_ari CLOSE_PARENTHESIS;
->>>>>>> 34df1678d44625c590599dc80ac0dea8f6703a15
 
