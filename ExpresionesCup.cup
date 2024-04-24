@@ -30,10 +30,11 @@ expr_ari,expr_log;
 
 precedence left ARITHMETIC;
 
+start with def_class;
+
 def_class ::= PUBLIC CLASS ID OPEN_BRACKET lista_metodos CLOSE_BRACKET;
 
-lista_metodos ::= metodo lista_metodos 
-				  | ; 
+lista_metodos ::= lista_metodos metodo | /*vacio*/ ;
 
 
 metodo ::= metodo_main 

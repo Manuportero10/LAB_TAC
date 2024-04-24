@@ -33,4 +33,4 @@ import java_cup.runtime.Symbol;
 ")" {return new Symbol(sym.CLOSE_PARENTHESIS); }
 "{" {return new Symbol(sym.OPEN_BRACKET); }
 "}" {return new Symbol(sym.CLOSE_BRACKET); }
-[^ \t\n\r\f] {}   // Ignorar espacios en blanco y caracteres de control
+[ \t\n\r\f] {}   // Ignorar espacios en blanco y caracteres de control
