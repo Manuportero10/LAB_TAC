@@ -20,39 +20,43 @@ parser code {:
 		}
 :}
 
-terminal PUBLIC, CLASS, ID, OPEN_BRACKET, CLOSE_BRACKET,OPEN_PARENTHESIS,
-CLOSE_PARENTHESIS,STATIC,VOID,MAIN,FOR,ASSIGN,OP_ASSIGN,VAR_TYPE,RETURN,COMMA,SEMICOLON;
+terminal PUBLIC, CLASS, MAIN, STATIC, VOID, FOR, WHILE, DO, VAR_TYPE, RETURN,
+ID, ASSIGN, OP_ASSIGN, ARITHMETIC, RELATIONAL, LOGICAL, NUMERO, LOGICO, 
+SEMICOLON, COMMA, OPEN_PARENTHESIS, CLOSE_PARENTHESIS, OPEN_BRACKET, CLOSE_BRACKET, IF;
 
-terminal Integer INTEGER;
-terminal Boolean BOOLEAN;
+non terminal def_class, lista_metodos, metodo, lista_args_cab, lista_args_llam, metodo_main, metodo_void, metodo_var,
+retorno, llamada_func, lista_instr, def_var, assign, op_n_assign, bucle_for, bucle_while, expresion_if,
+expr_ari,expr_log;
 
-non terminal def_class, lista_metodos, metodo, lista_args_cab, lista_args_llam, metodo_main, metodo_void, metodo_var
-retorno, llamada_func, lista_instr, def_var, assign, op_n_assign, bucle_for, bucle_while, expresion_if;
-
-non terminal Integer expr_ari;
-not terminal Boolean expr_log;
+precedence left ARITHMETIC;
 
 def_class ::= PUBLIC CLASS ID OPEN_BRACKET lista_metodos CLOSE_BRACKET;
 
 lista_metodos ::= metodo lista_metodos 
-				  | metodo 
-				  | /*EMPTY*/;
+				  | ; 
+
 
 metodo ::= metodo_main 
 		   | metodo_void 
 		   | metodo_var;
 
-lista_args_cab ::= VAR_TYPE ID COMMA lista_args
+lista_args_cab ::= VAR_TYPE ID COMMA lista_args_cab
 				   | VAR_TYPE ID;
 				
 lista_args_llam ::= ID COMMA lista_args_llam 
 					| ID;
 
-metodo_main ::= PUBLIC STATIC VOID MAIN OPEN_PARENTHESIS CLOSE_PARENTHESIS OPEN_BRACKET lista_instr CLOSE_BRACKET;
+metodo_main ::= PUBLIC STATIC VOID MAIN OPEN_PARENTHESIS CLOSE_PARENTHESIS OPEN_BRACKET 
+				lista_instr 
+				CLOSE_BRACKET;
 
-metodo_void ::= PUBLIC STATIC VOID ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARENTHESIS OPEN_BRACKET lista_instr CLOSE_BRACKET;
+metodo_void ::= PUBLIC STATIC VOID ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARENTHESIS OPEN_BRACKET 
+				lista_instr 
+				CLOSE_BRACKET;
 
-metodo_var ::= PUBLIC STATIC VAR_TYPE ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARENTHESIS OPEN_BRACKET lista_instr retorno CLOSE_BRACKET;
+metodo_var ::= PUBLIC STATIC VAR_TYPE ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARENTHESIS 
+			   OPEN_BRACKET lista_instr retorno 
+			   CLOSE_BRACKET;
 
 retorno ::= RETURN expr_ari SEMICOLON 
 		   | RETURN expr_log SEMICOLON 
@@ -82,7 +86,7 @@ assign ::= ID ASSIGN expr_ari SEMICOLON
 
 op_n_assign ::= ID OP_ASSIGN SEMICOLON;
 
-bucle_for ::= FOR OPEN_PARENTHESIS VAR_TYPE ID ASSIGN INTEGER SEMICOLON 
+bucle_for ::= FOR OPEN_PARENTHESIS VAR_TYPE ID ASSIGN NUMERO SEMICOLON 
 		ID RELATIONAL ID SEMICOLON  
 		ID OP_ASSIGN CLOSE_PARENTHESIS OPEN_BRACKET 
 		lista_instr 
@@ -98,8 +102,8 @@ expresion_if ::= IF OPEN_PARENTHESIS expr_log CLOSE_PARENTHESIS
        lista_instr 
        CLOSE_BRACKET;
 
-Integer expr_ari ::= INTEGER 
-                	 | ID
-                	 | expr_ari ARITHMETIC expr_ari 
-                	 | OPEN_PARENTHESIS expr_ari CLOSE_PARENTHESIS;
+expr_ari ::= NUMERO 
+             | ID
+             | expr_ari ARITHMETIC expr_ari 
+             | OPEN_PARENTHESIS expr_ari CLOSE_PARENTHESIS;
 

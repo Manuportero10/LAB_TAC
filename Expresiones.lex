@@ -16,11 +16,12 @@ import java_cup.runtime.Symbol;
 "for" {return new Symbol(sym.FOR); }
 "while" {return new Symbol(sym.WHILE); }
 "do" {return new Symbol(sym.DO); }
-"true" | "false" {return new Symbol(sym.BOOLEAN, yytext()); }
+"if" {return new Symbol(sym.IF); }
+"true" | "false" {return new Symbol(sym.LOGICO, yytext()); }
 "int" | "boolean" {return new Symbol(sym.VAR_TYPE, yytext()); }
 "return" {return new Symbol(sym.RETURN); }
 [a-zA-Z][a-zA-Z0-9_]* {return new Symbol(sym.ID, yytext()); }
-[0-9]*[0-9] {return new Symbol(sym.INTEGER, yytext()); }
+[0-9]*[0-9] {return new Symbol(sym.NUMERO, yytext()); }
 "=" {return new Symbol(sym.ASSIGN); }
 "++" | "--" {return new Symbol(sym.OP_ASSIGN, yytext()); }
 "+" | "-" |  "*" | "/" {return new Symbol(sym.ARITHMETIC, yytext()); } 
