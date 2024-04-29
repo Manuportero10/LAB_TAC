@@ -26,15 +26,15 @@ SEMICOLON, COMMA, OPEN_PARENTHESIS, CLOSE_PARENTHESIS, OPEN_BRACKET, CLOSE_BRACK
 
 non terminal def_class, lista_metodos, metodo, lista_args_cab, lista_args_llam, metodo_main, metodo_void, metodo_var,
 retorno, llamada_func, lista_instr, def_var, assign, op_n_assign, bucle_for, bucle_while, expresion_if,
-expr_ari,expr_log;
+expr_ari,expr_log,do_while, lista_instr_void;
 
-precedence left ARITHMETIC;
+precedence left ARITHMETIC, RETURN;
 
 start with def_class;
 
 def_class ::= PUBLIC CLASS ID OPEN_BRACKET lista_metodos CLOSE_BRACKET;
 
-lista_metodos ::= lista_metodos metodo | /*vacio*/ ;
+lista_metodos ::= metodo lista_metodos | /*vacio*/ ;
 
 
 metodo ::= metodo_main 
@@ -42,56 +42,76 @@ metodo ::= metodo_main
 		   | metodo_var;
 
 lista_args_cab ::= VAR_TYPE ID COMMA lista_args_cab
-				   | VAR_TYPE ID;
+				   | VAR_TYPE ID
+				   | /*vacio*/;
 				
-lista_args_llam ::= ID COMMA lista_args_llam 
-					| ID;
+lista_args_llam ::= LOGICO COMMA lista_args_llam
+					| expr_ari COMMA lista_args_llam
+					| LOGICO
+					| expr_ari
+					| /*vacio*/;
+
 
 metodo_main ::= PUBLIC STATIC VOID MAIN OPEN_PARENTHESIS CLOSE_PARENTHESIS OPEN_BRACKET 
-				lista_instr 
+				lista_instr /*pendiente a cambiar a lista_instr_void*/
 				CLOSE_BRACKET;
 
 metodo_void ::= PUBLIC STATIC VOID ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARENTHESIS OPEN_BRACKET 
-				lista_instr 
+				lista_instr_void 
 				CLOSE_BRACKET;
 
 metodo_var ::= PUBLIC STATIC VAR_TYPE ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARENTHESIS 
-			   OPEN_BRACKET lista_instr retorno 
+			   OPEN_BRACKET lista_instr /*intencion de ponerle un return al final*/
 			   CLOSE_BRACKET;
 
-retorno ::= RETURN expr_ari SEMICOLON 
+retorno ::= RETURN expr_ari SEMICOLON
 		   | RETURN expr_log SEMICOLON 
 		   | RETURN llamada_func SEMICOLON;
 
-llamada_func ::= ID OPEN_PARENTHESIS lista_args_llam CLOSE_PARENTHESIS;
+llamada_func ::= ID OPEN_PARENTHESIS lista_args_llam CLOSE_PARENTHESIS
+				| OPEN_PARENTHESIS ID OPEN_PARENTHESIS lista_args_llam CLOSE_PARENTHESIS CLOSE_PARENTHESIS
+				| llamada_func SEMICOLON;
 
-lista_instr ::= def_var lista_instr 
+lista_instr ::= def_var lista_instr
 			    | assign lista_instr 
 				| bucle_for lista_instr 
 				| op_n_assign lista_instr 
 				| llamada_func lista_instr
-				| def_var 
-				| assign 
-				| bucle_for 
-				| op_n_assign 
-				| llamada_func 
-				| bucle_while 
-				| expresion_if;
+				| bucle_while lista_instr
+				| retorno lista_instr
+				| expresion_if lista_instr
+				| /*vacio*/;
+
+lista_instr_void ::= def_var lista_instr_void 
+			    | assign lista_instr_void 
+				| bucle_for lista_instr_void 
+				| op_n_assign lista_instr_void 
+				| llamada_func lista_instr_void
+				| bucle_while lista_instr_void
+				| expresion_if lista_instr_void
+				| /*vacio*/;
 				
 def_var ::= VAR_TYPE ID SEMICOLON 
-		    | VAR_TYPE assign;
+		    | VAR_TYPE ID assign
+		    | ID assign;
 
-assign ::= ID ASSIGN expr_ari SEMICOLON 
-		   | ID ASSIGN expr_log SEMICOLON 
-		   | ID ASSIGN llamada_func SEMICOLON;
+assign ::= ASSIGN expr_ari SEMICOLON 
+		   | ASSIGN expr_log SEMICOLON 
+		   | ASSIGN llamada_func SEMICOLON;
 
 op_n_assign ::= ID OP_ASSIGN SEMICOLON;
 
 bucle_for ::= FOR OPEN_PARENTHESIS VAR_TYPE ID ASSIGN NUMERO SEMICOLON 
-		ID RELATIONAL ID SEMICOLON  
+		ID RELATIONAL expr_ari SEMICOLON  
 		ID OP_ASSIGN CLOSE_PARENTHESIS OPEN_BRACKET 
 		lista_instr 
-		CLOSE_BRACKET; 
+		CLOSE_BRACKET |
+		FOR OPEN_PARENTHESIS VAR_TYPE ID ASSIGN NUMERO SEMICOLON 
+		ID RELATIONAL llamada_func SEMICOLON  
+		ID OP_ASSIGN CLOSE_PARENTHESIS OPEN_BRACKET 
+		lista_instr 
+		CLOSE_BRACKET;
+		 
 
 bucle_while ::= WHILE OPEN_PARENTHESIS expr_log CLOSE_PARENTHESIS 
 		  OPEN_BRACKET 
@@ -102,9 +122,14 @@ expresion_if ::= IF OPEN_PARENTHESIS expr_log CLOSE_PARENTHESIS
        OPEN_BRACKET 
        lista_instr 
        CLOSE_BRACKET;
+       
 
 expr_ari ::= NUMERO 
              | ID
              | expr_ari ARITHMETIC expr_ari 
+             | llamada_func ARITHMETIC expr_ari
+             | expr_ari ARITHMETIC llamada_func 
              | OPEN_PARENTHESIS expr_ari CLOSE_PARENTHESIS;
+             
+expr_log ::= LOGICO;
 
