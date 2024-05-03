@@ -34,7 +34,7 @@ start with def_class;
 
 def_class ::= PUBLIC CLASS ID OPEN_BRACKET lista_metodos CLOSE_BRACKET;
 
-lista_metodos ::= metodo lista_metodos | /*vacio*/ ;
+lista_metodos ::= metodo lista_metodos | /*vacio*/;
 
 
 metodo ::= metodo_main 
@@ -54,7 +54,7 @@ lista_args_llam ::= LOGICO COMMA lista_args_llam
 
 
 metodo_main ::= PUBLIC STATIC VOID MAIN OPEN_PARENTHESIS CLOSE_PARENTHESIS OPEN_BRACKET 
-				lista_instr /*pendiente a cambiar a lista_instr_void*/
+				lista_instr_void
 				CLOSE_BRACKET;
 
 metodo_void ::= PUBLIC STATIC VOID ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARENTHESIS OPEN_BRACKET 
@@ -62,7 +62,7 @@ metodo_void ::= PUBLIC STATIC VOID ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARE
 				CLOSE_BRACKET;
 
 metodo_var ::= PUBLIC STATIC VAR_TYPE ID OPEN_PARENTHESIS lista_args_cab CLOSE_PARENTHESIS 
-			   OPEN_BRACKET lista_instr  /*intencion de ponerle un return al final*/
+			   OPEN_BRACKET lista_instr
 			   CLOSE_BRACKET;
 
 retorno ::= RETURN expr_ari SEMICOLON
@@ -81,7 +81,7 @@ lista_instr ::= def_var lista_instr
 				| bucle_while lista_instr
 				| retorno lista_instr
 				| expresion_if lista_instr
-				| /*vacio*/;
+				| retorno;
 
 
 lista_instr_void ::= def_var lista_instr_void 
@@ -106,18 +106,18 @@ op_n_assign ::= ID OP_ASSIGN SEMICOLON;
 bucle_for ::= FOR OPEN_PARENTHESIS VAR_TYPE ID ASSIGN NUMERO SEMICOLON 
 		ID RELATIONAL expr_ari SEMICOLON  
 		ID OP_ASSIGN CLOSE_PARENTHESIS OPEN_BRACKET 
-		lista_instr 
+		lista_instr_void 
 		CLOSE_BRACKET |
 		FOR OPEN_PARENTHESIS VAR_TYPE ID ASSIGN NUMERO SEMICOLON 
 		ID RELATIONAL llamada_func SEMICOLON  
 		ID OP_ASSIGN CLOSE_PARENTHESIS OPEN_BRACKET 
-		lista_instr 
+		lista_instr_void 
 		CLOSE_BRACKET;
 		 
 
 bucle_while ::= WHILE OPEN_PARENTHESIS expr_log CLOSE_PARENTHESIS 
 		  OPEN_BRACKET 
-		  lista_instr 
+		  lista_instr_void 
 		  CLOSE_BRACKET;
 
 expresion_if ::= IF OPEN_PARENTHESIS expr_log CLOSE_PARENTHESIS 

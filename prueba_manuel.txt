@@ -6,15 +6,6 @@ public class Ejem_TAC {
 		for(int i = 0; i<n; i++){
 			x++; int comida = 0;
 			x--;
-			return x;
-			return (x+4);
-			return factorial();
-			return factorial(4);
-			return factorial(3+2,false,x)*2;
-			factorial(4+x,false,4,x);
-			facotrial(false);
-			factorial(x);
-			factorial();
 			int coco = factorial(4,false,x,x+2*9)+2;
 			coco = factorial(4,false,x+1,a)+2;
 		}
@@ -36,7 +27,6 @@ public class Ejem_TAC {
 	public static boolean metodo1(int a, int b, int c) {
 		int a;
 		x++;
-		return factorial(factorial(2)+1);
 		for(int i=0;i<n;i++){
 			int mult = i*5;
 			for(int j=0;j<n;j++){
