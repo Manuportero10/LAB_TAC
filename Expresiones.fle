@@ -163,8 +163,3 @@
 "{" {open_bracketCount++; System.out.println("TOKEN: OPEN_BRACKET => " + yytext()); }
 "}" {close_bracketCount++; System.out.println("TOKEN: CLOSE_BRACKET => " + yytext()); }
 [^ \t\n\r\f] {}   // Ignorar espacios en blanco y caracteres de control
-
-
-
-
-

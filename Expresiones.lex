@@ -26,7 +26,8 @@ import java_cup.runtime.Symbol;
 "++" | "--" {return new Symbol(sym.OP_ASSIGN, yytext()); }
 "+" | "-" |  "*" | "/" {return new Symbol(sym.ARITHMETIC, yytext()); } 
 "<" | "<=" | ">" | ">=" | "==" | "!="  {return new Symbol(sym.RELATIONAL, yytext()); }
-"&&" | "||" | "!" {return new Symbol(sym.LOGICAL, yytext()); }
+"&&" | "||" {return new Symbol(sym.LOGICAL, yytext()); }
+"!" {return new Symbol(sym.NEG, yytext()); }
 ";" {return new Symbol(sym.SEMICOLON); }
 "," {return new Symbol(sym.COMMA); }
 "(" {return new Symbol(sym.OPEN_PARENTHESIS); }
