@@ -1,40 +1,28 @@
 public class Ejem_TAC {
 
+	public static boolean comparar(int valor, int tope) {
+		int aux;
+		aux = calculaValor(valor);
+		return ((tope < 5*2) || (aux < 1)) && true;
+	}
+	
+	public static int calculaValor(int valor1) {
+		int aux = 1;
+		for (int i = 0; i < valor1; i++) {
+			for (int j = i ; j < i; j--) {
+				aux = aux + 2;
+			}
+			aux = aux + 1;
+		}
+		return aux;
+	}
+	
 	public static void main() {
-		int esCierto = 3-9*1;
+		boolean esCierto = false;
 		int x = 0;
-		for(int i = 0; i<n; i++){
-			x++; int comida = 0;
-			x--;
-			int coco = factorial(4,false,x,x+2*9)+2;
-			coco = factorial(4,false,x+1,a)+2;
+		while (esCierto > 9){
+			x++;
+			sCierto = comparar(x,5);
 		}
 	}
-	
-	public static void metodo2(int x, int y, int z) {
-		int a;
-		x++;
-		for(int i=0;i<n;i++){
-			int mult = i*5;
-			for(int j=0;j<n;j++){
-				suma = i+j;
-			}
-			resta = i-j;
-		}
-		menu();
-	}
-	
-	public static boolean metodo1(int a, int b, int c) {
-		int a;
-		x++;
-		for(int i=0;i<n;i++){
-			int mult = i*5;
-			for(int j=0;j<n;j++){
-				suma = i+j;
-			}
-			resta = i-j;
-		}
-		return x;
-	}
-	
 }
