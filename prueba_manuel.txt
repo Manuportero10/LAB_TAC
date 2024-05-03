@@ -36,6 +36,7 @@ public class Ejem_TAC {
 	public static boolean metodo1(int a, int b, int c) {
 		int a;
 		x++;
+		return factorial(factorial(2)+1);
 		for(int i=0;i<n;i++){
 			int mult = i*5;
 			for(int j=0;j<n;j++){
@@ -43,7 +44,7 @@ public class Ejem_TAC {
 			}
 			resta = i-j;
 		}
-		menu();
+		return x;
 	}
 	
 }
